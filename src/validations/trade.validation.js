@@ -1,4 +1,4 @@
-import { body } from "express-validator";
+import { body, param } from "express-validator";
 
 export const validateCreateTrade = [
   body("type")
@@ -6,7 +6,7 @@ export const validateCreateTrade = [
     .isIn(["buy", "sell"]).withMessage("Type must be 'buy' or 'sell'"),
   body("user_id")
     .exists().withMessage("user_id is required")
-    .isMongoId().withMessage("user_id must be a valid MongoDB ObjectId"),
+    .isInt().withMessage("user_id must be an integer"),
   body("symbol")
     .exists().withMessage("Symbol is required")
     .isString().withMessage("Symbol must be a string")
@@ -18,4 +18,9 @@ export const validateCreateTrade = [
   body("price")
     .exists().withMessage("Price is required")
     .isFloat({ min: 0 }).withMessage("Price must be a non-negative number"),
+];
+
+export const validateGetTrade = [
+  param("id")
+    .isInt().withMessage("Invalid Trade ID format"),
 ];
