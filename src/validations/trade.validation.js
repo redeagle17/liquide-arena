@@ -22,5 +22,5 @@ export const validateCreateTrade = [
 
 export const validateGetTrade = [
   param("id")
-    .isInt().withMessage("Invalid Trade ID format"),
+    .isInt({ min: 1 }).withMessage("Invalid Trade ID format"),
 ];

@@ -1,4 +1,3 @@
-// src/models/Trade.js
 import mongoose from "mongoose";
 import Counter from "./Counter.js";
 
